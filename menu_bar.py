@@ -615,16 +615,24 @@ class HelpMenu:
         Displays the options of the Help ribbon in the menu
         """
 
-        self.__help_menu.add_command(label="View Help")
+        self.__help_menu.add_command(label="View Help", command=lambda: self.__view_help())
 
         self.__help_menu.add_separator()
 
         self.__help_menu.add_command(label="About TextEditor", command=lambda: self.__view_about_info())
 
-    def __view_help(self):
-        pass
+    @staticmethod
+    def __view_help():
+        """
+        Opens the GitHub repository of this project
+        """
+
+        webbrowser.open("https://github.com/fecrol/TextEditor", new=2)
 
     def __view_about_info(self):
+        """
+        Opens up an About window about this TextEditor app
+        """
 
         window = tk.Toplevel()
         window.resizable(0, 0)
