@@ -111,9 +111,6 @@ class Fonts:
         if self.__current_font_size in self.__font_sizes:
             self.__list_of_font_sizes.see(self.__list_of_font_sizes.get(0, tk.END).index(self.__current_font_size))
             self.__list_of_font_sizes.select_set(self.__list_of_font_sizes.get(0, tk.END).index(self.__current_font_size))
-        else:
-            pass
-
         self.__sample_text_frame.grid(row=3, column=0, columnspan=3, padx=10, pady=10)
         self.__sample_text.pack()
 
