@@ -238,9 +238,8 @@ class FileMenu:
             self.__save_as(text_area, window, filename)
         else:
             text = text_area.get("1.0", "end-1c")
-            file = open(filename.get(), "w")
-            file.write(text)
-            file.close()
+            with open(filename.get(), "w") as file:
+                file.write(text)
             self.__file_saved.set(True)
 
     def __save_as(self, text_area, window, filename):
@@ -256,9 +255,8 @@ class FileMenu:
                 filename.set(file)
 
             text = text_area.get("1.0", "end-1c")
-            file = open(file, "w")
-            file.write(text)
-            file.close()
+            with open(file, "w") as file:
+                file.write(text)
             text_area.edit_modified(False)
             self.__file_saved.set(True)
 
@@ -493,9 +491,6 @@ class FormatMenu:
 
         if result[0][0] == 1:
             self.__format_menu.invoke(self.__format_menu.index("Word Wrap"))
-        else:
-            pass
-
         conn.close()
 
     def __toggle_word_wrap(self, text_area, text_box):
@@ -569,9 +564,6 @@ class ViewMenu:
 
         if result[0][0] == 1:
             self.__view_menu.invoke(self.__view_menu.index("Dark Mode"))
-        else:
-            pass
-
         conn.close()
 
     def __toggle_dark_mode(self, text_area):
